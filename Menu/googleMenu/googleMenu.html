@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3实现Google动感菜单</title>
+    <style>
+        *{ margin: 0; padding: 0; }
+        body{
+            background: #f2f2f2;
+        }
+        ul{
+            width: 200px; 
+            margin: 50px auto; 
+            list-style: none; 
+            text-align: center; 
+            background: #fff;
+        }
+        ul li{
+            width: 50px;
+            height: 50px;
+            position: relative;
+            background: #aaa; 
+           
+        }
+        ul li:first-child{background: #B3C833 url("./images/icoa1.png") no-repeat 12px center;}
+        ul li:nth-child(2){background: #CE5043 url("./images/icoa2.png") no-repeat 12px center;}
+        ul li:nth-child(3){background: #f7854a url("./images/icoa3.png") no-repeat 12px center;}
+        ul li:nth-child(4){background: #1AA1E1 url("./images/icoa4.png") no-repeat 12px center;}
+        ul li:nth-child(5){background: #5E5CA6 url("./images/icoa5.png") no-repeat 12px center;}
+        ul li:last-child{background: #658092 url("./images/icoa6.png") no-repeat 12px center;} 
+        
+        ul a{
+            text-decoration: none;
+            display: block;
+            position: absolute;
+            top: 0px;
+            left: 50px;
+            width: 142px;
+            line-height: 50px;
+        }
+        ul li:hover{ 
+            width: 200px; 
+            transition:all ease 0.2s;
+        }
+        a:hover{ 
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li><a href="#">首页</a></li>
+        <li><a href="#">影视</a></li>
+        <li><a href="#">音乐</a></li>
+        <li><a href="#">图书</a></li>
+        <li><a href="#">记事</a></li>
+        <li><a href="#">设备</a></li>
+    </ul>
+</body>
+</html>
