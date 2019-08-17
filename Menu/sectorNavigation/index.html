@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #menu{
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            height: 50px;
+            width: 50px;
+        }
+        #list{
+            height: 42px;
+            width: 42px;
+            position: relative;
+            margin: 4px;
+        }
+        #list img{
+            position: absolute;
+            border-radius: 21px;
+            top: 0;
+            left: 0;
+            transition: all .5s ease;
+	    }
+        
+        #home{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 50px;
+            border-radius: 25px;
+            width: 50px;
+            transition: 1s;
+            background: url(./img/home.png) no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div id="menu">
+    	<div id="list">
+        	<img src="img/clos.png">
+            <img src="img/full.png">
+            <img src="img/open.png">
+            <img src="img/prev.png">
+            <img src="img/refresh.png">
+        </div>
+        <div id="home"></div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
