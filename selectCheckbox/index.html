@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" id="checkAll"><label for="">全選</label>
+    <a href="javascript:" id="checkReverse">反選</a>
+    <div>
+        <label for="">
+            <input type="checkbox">first
+        </label>
+        <label for="">
+            <input type="checkbox">second
+        </label>
+        <label for="">
+            <input type="checkbox">third
+        </label>
+        <label for="">
+            <input type="checkbox">forth
+        </label>
+        <label for="">
+            <input type="checkbox">fifth
+        </label>
+        <label for="">
+            <input type="checkbox">sixth
+        </label>
+        <label for="">
+            <input type="checkbox">seventh
+        </label>
+        <label for="">
+            <input type="checkbox">eighth
+        </label>
+    </div>
+<script>
+    var checkAll = document.getElementById('checkAll');
+    var checkReverse = document.getElementById('checkReverse');
+    var inputArr = document.getElementsByTagName('input');
+    var labelText = document.getElementsByTagName('label')[0];
+
+
+    function selectAll(){
+        if(inputArr[0].checked === true){
+            for(var i = 1; i <= inputArr.length-1; i++){
+                inputArr[i].checked = "checked";
+                labelText.innerText = '全不選';
+            }
+        }else{
+            for(var i = 1; i <= inputArr.length-1; i++){
+                inputArr[i].checked = false;
+                labelText.innerText = '全選';
+            }
+        } 
+    }
+
+
+    function selectReverse(){
+        for(var i = 1; i < inputArr.length-1; i++){
+            inputArr[i].checked = !inputArr[i].checked;
+        }
+    }
+    checkAll.addEventListener('click',function(){
+        selectAll();
+    });
+    checkReverse.addEventListener('click',function(){
+        selectReverse();
+    });
+</script>    
+</body>
+</html>

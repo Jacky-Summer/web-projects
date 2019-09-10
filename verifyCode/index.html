@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .wrap{
+            width: 500px;
+            margin: 20px auto;
+        }
+        #text{
+            height: 30px;
+            box-sizing: border-box;
+            vertical-align: middle;
+            text-indent: 1em;
+        }
+        #code{
+            display: inline-block;
+            height: 30px;
+            width: 80px;
+            vertical-align: middle;
+            text-decoration: none;
+            color: #fff;
+            padding-left: 5px;
+            background-color: gray;
+            letter-spacing: 4px;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+        #btn{
+            height: 30px;
+            background: #499990;
+            border-radius: 8px;
+            width: 60px;
+            color: #fff;
+            outline: 0;
+        }
+    </style>
+</head>
+<body onload="createCode()">
+    <div class="wrap">
+        <input type="text" id="text" placeholder = "请输入验证码">
+        <a href="javascript:" id="code" onclick="createCode()"></a>
+        <input type="button" id="btn" value="验证" onclick="validate()">
+    </div>
+   
+    <script>
+        var random = [0,1,2,3,4,5,6,7,8,9,'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R', 'S','T','U','V','W','X','Y','Z'];    
+        var codeArr = [];
+        function createCode(){
+            for(var i = 0; i < 4; i++){
+                codeArr[i] = random[Math.floor(Math.random()*36)];
+            }
+            document.getElementById('code').innerHTML = codeArr.join('');
+        }
+        
+        function validate(){
+            var codeText = document.getElementById('text').value.toUpperCase();
+            if(codeText === codeArr.join('')){
+                alert('success');
+                createCode();
+            }else{
+                alert('fail');
+                createCode();
+            }
+        }
+        
+    </script>
+</body>
+</html>
