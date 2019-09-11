@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .container{
+            width: 900px;
+            height: 140px;
+            margin: 0 auto;
+        }
+        .box{
+            list-style: none;
+            width: 150px;
+            height: 80px;
+            float: left;
+            padding: 10px;
+            background: #409eff;
+            color: #fff;
+            margin: 10px 20px
+        }
+        li>p:first-child{
+            height: 25px;
+            line-height: 10px;
+            border-bottom: 1px solid;
+        }
+        #count-container{
+            width: 900px;
+            height: 300px;
+            border:1px solid;
+            margin: auto;
+            overflow: hidden;
+        }
+        #count-container .info-row{
+            border-bottom: 1px solid;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            clear: both;
+        }
+        #count-container .book-num{
+            float: left;
+            width: 300px;
+        }
+        #count-container .book-name{
+            float: left;
+            width: 300px;
+        }
+        #count-container .book-money{
+            float: left;
+            width: 300px;
+        }
+        #totalMoney{
+            float: right;
+            margin-right: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <ul class="container">
+        <li class="box" draggable="true">
+            <p>Java从入门到精通</p>
+            <p>40</p>
+        </li>
+        <li class="box" draggable="true">
+            <p>你不知道的JavaScript</p>
+            <p>50</p>
+        </li>
+        <li class="box" draggable="true">
+            <p>前端性能优化指南</p>
+            <p>45</p>
+        </li>
+        <li class="box" draggable="true">
+            <p>C语言从入门到放弃</p>
+            <p>38</p>
+        </li>
+    </ul>
+    <div id="count-container">
+        
+    </div>
+    <script>
+        var countDiv = document.getElementById('count-container');
+        var bookList = document.getElementsByTagName('li');
+        var obj = {};
+        var totalMoneyWrapper = null;
+        var totalMoney = 0;
+        for(var i = 0; i < bookList.length; i++){
+            bookList[i].ondragstart = function(ev){
+                var info = this.getElementsByTagName('p');
+                ev.dataTransfer.setData("title",info[0].innerHTML);
+                ev.dataTransfer.setData("money",info[1].innerHTML);
+            }
+        }
+        countDiv.ondragover = function(ev){
+            ev.preventDefault(); //调用 preventDefault() 来避免浏览器对数据的默认处理（drop 事件的默认行为是以链接形式打开）
+        }
+        countDiv.ondrop = function(ev){
+            ev.preventDefault();
+            var title = ev.dataTransfer.getData("title");
+            var money = ev.dataTransfer.getData("money");
+            var infoRow = document.createElement('p');
+            if(!obj[title]){
+                var bookNum = document.createElement('span');
+                var bookName = document.createElement('span');
+                var bookMoney = document.createElement('span');
+
+
+                infoRow.className = 'info-row';
+                bookNum.className = 'book-num';
+                bookNum.innerHTML = 1;
+                bookName.className = 'book-name';
+                bookName.innerHTML = title;
+                bookMoney.className = 'book-money';
+                bookMoney.innerHTML = money;
+
+
+                infoRow.appendChild(bookNum);
+                infoRow.appendChild(bookName);
+                infoRow.appendChild(bookMoney);
+                
+                countDiv.appendChild(infoRow);
+                obj[title] = 1;
+            }
+
+
+            if(!totalMoney){
+                totalMoneyWrapper = document.createElement('div');
+                totalMoneyWrapper.id = 'totalMoney';
+            }
+            
+            totalMoney += parseInt(money);
+            totalMoneyWrapper.innerHTML = totalMoney;
+            countDiv.appendChild(totalMoneyWrapper);
+        }
+    </script>
+</body>
+</html>
