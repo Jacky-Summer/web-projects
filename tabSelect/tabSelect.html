@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .box{
+            width: 380px;
+            border: 1px solid;
+            margin: 10px auto;
+        }
+        #tab{ 
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            background: #333;
+        }
+        #tab li{
+            list-style: none;
+            box-sizing: border-box;
+            width: 120px;
+            float: left;
+            line-height: 40px;
+            height: 40px;
+            text-align: center;
+            background: #333;
+            color: #fff;
+            cursor: pointer;
+        }
+        #content{
+            clear: both;
+            width: 100%;
+            height: 200px;
+            background: #f2f2f2;
+            text-align: center;
+        }
+        #content>div{
+            display: none;
+        }
+        #content>.activeDiv{
+            display: block;
+            line-height: 200px;
+        }
+        #tab .active{
+            background: #ddd;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul id="tab">
+            <li class="active">新闻</li>
+            <li>音乐</li>
+            <li>视频</li>
+        </ul>
+        <div id="content">
+            <div class="activeDiv">
+                <h1>新闻内容</h1>
+            </div>
+            <div>
+                <h1>音乐内容</h1>
+            </div>
+            <div>
+                <h1>视频内容</h1>
+            </div>
+        </div>
+    </div>
+    <script>
+        var lis = document.getElementsByTagName('li');
+        var contentWrapper = document.getElementById('content');
+        var contents = contentWrapper.getElementsByTagName('div');
+
+
+        for(var i = 0; i < lis.length; i++){
+            lis[i].index = i;
+            lis[i].onclick = function(){
+               for(j = 0; j < lis.length; j++){
+                    lis[j].className = '';
+                    contents[j].className = '';
+               }
+               this.className = 'active';
+               contents[this.index].className = 'activeDiv';
+            }
+        }
+        console.log(lis);
+    </script>
+</body>
+</html>

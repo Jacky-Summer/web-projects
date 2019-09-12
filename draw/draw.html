@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            margin:10px;
+            background: gray;
+        }
+        .container{
+            width: 500px;
+            height: 500px;
+            margin: auto;
+        }
+        .btn{
+            text-align: center;
+            margin: 10px;
+        }
+        #reset{
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+        }
+        #canvas{
+            background: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn">
+            <button id="reset">重画</button>
+        </div>
+        <canvas id="canvas" width="500px" height="500px"></canvas>
+    </div>
+    <script>
+        var canvas = document.getElementById('canvas');
+
+
+        var cxt = canvas.getContext('2d');   
+        cxt.strokeStyle = 'black';
+        canvas.onmousedown = function(ev){
+            cxt.beginPath();
+            var ev = ev || event;
+            cxt.moveTo(ev.clientX - canvas.offsetLeft,ev.clientY - canvas.offsetTop);
+            document.onmousemove = function(e){
+                var e = e || event;
+                cxt.lineTo(e.clientX - canvas.offsetLeft, e.clientY - canvas.offsetTop);
+                cxt.stroke();
+            }
+        }
+
+
+        document.onmouseup = function(){
+            cxt.closePath();
+            document.onmousedown =  document.onmousemove = null;
+        }
+        
+        document.getElementById('reset').onclick = function(){
+            cxt.clearRect(0,0,canvas.width,canvas.height);
+        }
+    </script>
+</body>
+</html>
