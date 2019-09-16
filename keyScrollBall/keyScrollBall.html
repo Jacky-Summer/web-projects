@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            /* margin: 0;
+            padding: 0; */
+            background: #ccc;
+        }
+        #ball{
+            width:100px;
+            height:100px;
+            border: 2px solid #fff;
+            background:black;
+            position:absolute;
+            border-radius:50px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="ball"></div>
+    <script>
+        window.onload = function(){
+            var ball = document.getElementById('ball');
+            var clientWidth = document.body.clientWidth||document.documentElement.clientWidth;
+            var clientHeight = document.body.clientHeight||document.documentElement.clientHeight;
+            var timer = null;
+            document.onkeydown = function(ev){
+                var ev = ev || event;
+                clearInterval(timer);
+                timer = setInterval(function(){
+                    switch(ev.keyCode){
+                        case 37: //left
+                            if(ball.offsetLeft > 0){
+                                ball.style.left = -10 + ball.offsetLeft + "px";
+                            }
+                            break;
+                        case 38: //up
+                            if(ball.offsetTop > 0){
+                                ball.style.top = -10 + ball.offsetTop + "px";
+                            }
+                            break;
+                        case 39: //right
+                            if(ball.offsetLeft < clientWidth - ball.offsetWidth){
+                                ball.style.left = 10 + ball.offsetLeft + "px";
+                            }
+                            break;  
+                        case 40: //down
+                            if(ball.offsetLeft < clientHeight - ball.offsetHeight){
+                                ball.style.top = 10 + ball.offsetTop + "px";
+                            }
+                            break;
+                    }
+                },10);
+            }
+            document.onkeyup = function(){
+                clearInterval(timer);
+            }
+
+
+            
+        }
+    </script>
+</body>
+</html>

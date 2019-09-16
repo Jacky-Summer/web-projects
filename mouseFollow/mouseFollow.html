@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            position: relative;
+            margin: 20px auto;
+            width: 462px;
+            height: 77px;
+        }
+
+        .container .imgBox li {
+            float: left;
+            list-style: none;
+            margin-right: 18px;
+            width: 100px;
+            height: 75px;
+            border: 1px solid #000;
+        }
+
+        .container .imgBox li:nth-last-child(1) {
+            margin-right: 0;
+        }
+
+        .container .imgBox li img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <section class="container">
+        <ul class="imgBox clearfix">
+            <li><img src="./images/apple_1.jpg" alt=""></li>
+            <li><img src="./images/apple_2.jpg" alt=""></li>
+            <li><img src="./images/apple_3.jpg" alt=""></li>
+            <li><img src="./images/apple_4.jpg" alt=""></li>
+        </ul>
+    </section>
+</body>
+</html>
