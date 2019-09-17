@@ -35,6 +35,22 @@
             width: 100%;
             height: 100%;
         }
+
+        .container .mark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            box-sizing: border-box;
+            width: 400px;
+            height: 300px;
+            border: 1px solid #000;
+        }
+
+        .container .mark img {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -46,5 +62,38 @@
             <li><img src="./images/apple_4.jpg" alt=""></li>
         </ul>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        window.onload = function(){
+            var container = $('.container');
+            var lis = $('.container>.imgBox>li');
+            var mark = null;
+            lis.on('mouseover',function(ev){
+                //=>创建MARK:根据经过的LI中的小图片,动态管控MARK中的大图片
+                var strSrc = $(this).children('img').attr('src');
+                strSrc = strSrc.replace(/_(\d+)/g, '_$1_bigger');
+                if(!mark){
+                    mark = $(`<div class="mark"><img src="${strSrc}"/></div>`);
+                    container.append(mark);
+                }
+            }).on('mouseout',function(ev){
+                 //=>移除MARK
+                if (mark) {
+                    mark.remove();
+                    mark = null;
+                }
+            }).on('mousemove',function(ev){
+                var left = container.offset().left;
+                var top = container.offset().top;
+                curL = ev.pageX - left + 20,
+                curT = ev.pageY - top + 20;
+                mark.css({
+                    top: curT,
+                    left: curL
+                });
+            });
+            
+        }
+    </script>
 </body>
 </html>
