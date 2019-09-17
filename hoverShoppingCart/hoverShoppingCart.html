@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .shop{
+            width: 200px;
+            margin: 20px auto;
+            height: 50px;
+        }
+        .shop .shopLink{
+            position: relative;
+            display: block;
+            text-decoration: none;
+            color: #000;
+            height: 30px;
+            width: 100px;
+            background: lightblue;
+            text-align: center;
+            line-height: 30px;
+            border: 2px solid;
+        }
+        .shopList{
+            display: none;
+            position: absolute;
+            top: 32px;
+            left: 0;
+            width: 200px;
+            height:100px;
+            text-align: center;
+            background: lightcoral;
+        }
+        .shop .shopLink:hover .shopList{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="shop">
+        <a href="javascript:;" class="shopLink">
+            我的购物车
+            <!--基于CSS完成显示隐藏，需要保证列表是A的子元素，这样从A进入到列表不算离开A，这样列表就不会消失了-->
+            <div class="shopList">
+                购物车列表
+            </div>
+        </a>
+    </div>
+</body>
+</html>
