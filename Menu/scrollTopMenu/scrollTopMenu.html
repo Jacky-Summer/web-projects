@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #nav{
+            width: 100%;
+            height: 50px;
+        
+            background: #333;
+        }
+        #nav ul{
+            width: 1000px;
+            margin: 0 auto;
+        }
+        #nav li{
+            list-style: none;
+            float: left;
+            text-align: center;
+        }
+        #nav li a{
+            font-size: 16px;
+            height: 50px;
+            width: 100px;
+            color: #fff;
+            padding: 0 30px;
+            line-height: 50px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        #content1{
+            height: 400px;
+            background: lightblue;
+        }
+        #content2{
+            height: 400px;
+            background: lightgrey;
+        }
+        #content3{
+            height: 400px;
+            background: lightsalmon;
+        }
+        #content4{
+            height: 400px;
+            background: lightskyblue;
+        }
+        footer{
+            height: 80px;
+            background: green;
+        }
+        .fixed{
+            position: fixed;
+            left: 0;
+            top: 0;
+            animation: navAnimation .5s;
+        }
+        @keyframes navAnimation{
+            from { top:-50px; }
+            to { top: 0; }
+        }
+    </style>
+</head>
+<body>
+    <header><h1>Header</h1></header>
+    <nav id="nav">
+        <ul>
+            <li><a href="">首页</a></li>
+            <li><a href="">新闻</a></li>
+            <li><a href="">咨询</a></li>
+            <li><a href="">文化</a></li>
+            <li><a href="">旅游</a></li>
+            <li><a href="">联系我们</a></li>
+        </ul>
+    </nav>
+    <div id="content1"></div>
+    <div id="content2"></div>
+    <div id="content3"></div>
+    <div id="content4"></div>
+    <footer>底部</footer>
+    
+    <script>
+        window.onload = function(){
+            var nav = document.getElementById('nav');
+            var content3 = document.getElementById('content3');
+            scrollMenu(nav,content3);
+        }
+        function scrollMenu(obj,target){
+            window.onscroll = function(){
+                var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+                if(scrollTop > target.offsetTop){
+                    nav.classList.add('fixed');
+                }else{
+                    nav.classList.remove('fixed');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
