@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #box{
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background: gray;
+            text-align: center;
+            line-height: 100px;
+            border-radius: 100px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="box"><span>图标移动</span></div>
+    <script>
+        var box = document.getElementById('box');
+        
+        box.onmousedown = function(e){
+            document.onmousemove = function(e){
+                e.preventDefault();//防止选中区域文字
+                var e = e || event;
+                var x = e.clientX;
+                var y = e.clientY;
+                box.style.left = x  -50 + "px";
+                box.style.top = y -50 + "px";
+                
+            }
+        }
+        box.onmouseup = function(e){
+            document.onmousemove = document.onmouseup= null;
+        }
+    </script>
+</body>
+</html>
