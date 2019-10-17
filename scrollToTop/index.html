@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>平滑回到页面顶部功能</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            height: 4000px;
+            background: #f4f4f4;
+        }
+        #scrollToTop{
+            position: fixed;
+            display: none;
+            right: 20px;
+            bottom: 20px;
+            border: 40px solid transparent;
+            border-bottom-color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="scrollToTop"></div>
+<script>
+    window.onload = function(){
+        let scrollToTop = document.getElementById('scrollToTop'),
+            timer = null;
+
+        window.onscroll = function(){
+            if(document.documentElement.scrollTop + document.body.scrollTop > 100){
+
+                scrollToTop.style.display = 'block';
+            }else{
+                scrollToTop.style.display = 'none';
+            }
+        }
+        
+        scrollToTop.addEventListener('click',function(){
+            
+            timer = setInterval(() => {
+                let curH = document.documentElement.scrollTop || document.body.scrollTop;
+                let speed = Math.floor(-curH / 6);
+                document.documentElement.scrollTop = document.body.scrollTop = curH + speed;
+
+                if(curH <= 0){
+                    clearInterval(timer);
+                }   
+            }, 50);
+            
+        });
+    }
+</script>
+</body>
+</html>
