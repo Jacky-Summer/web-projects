@@ -8,7 +8,7 @@ A collection of different types of applications with JavaScript or CSS3
 1. [CSS3实现Google动感菜单](http://htmlpreview.github.io/?https://github.com/Jacky-Summer/web-projects/blob/master/Menu/googleMenu/googleMenu.html)
 2. [CSS3实现动感光影垂直菜单栏](http://htmlpreview.github.io/?https://github.com/Jacky-Summer/web-projects/blob/master/Menu/moveMenu/index.html)
 3. [页面滚动到一定高度显示悬浮菜单](https://htmlpreview.github.io/?https://raw.githubusercontent.com/Jacky-Summer/web-projects/master/Menu/scrollTopMenu/scrollTopMenu.html)
-4. [实现扇形旋转飞进飞出菜单栏] (http://htmlpreview.github.io/?https://github.com/Jacky-Summer/web-projects/blob/master/Menu/sectorNavigation/index.html)
+4. [实现扇形旋转飞进飞出菜单栏](http://htmlpreview.github.io/?https://github.com/Jacky-Summer/web-projects/blob/master/Menu/sectorNavigation/index.html)
 
 ## 其它
 
